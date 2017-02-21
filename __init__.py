@@ -51,7 +51,9 @@ def send_email(username='qingju.li@linjiahaoyi.com', password='Likaibo150', rece
 
 while True:
     try: 
-        bs_txt_html =get_html('https://www.wesai.com/api/rest/9c6197b194dd222ce6c7672ddd7eb8cf/Java/item/queryItem/%7B%22itemQuery%22:%7B%22allPlatform%22:false,%22cityId%22:%220%22,%22cityName%22:%22%E5%85%A8%E5%9B%BD%22,%22itemTypeId%22:null,%22itemTypePid%22:%228a8283eb55dfd9600156029f3ce00011%22,%22keyword%22:null,%22onlineId%22:null,%22showStartTime%22:null,%22showEndTime%22:null,%22venueId%22:%22%22,%22orderType%22:null,%22curpage%22:1,%22pagesize%22:8%7D%7D?v=1487678065856')
+        token_str =json.loads(get_html('https://www.wesai.com/index.php?r=user/getcuruser'))['data']['token'].encode('utf8')
+        print token_str
+        bs_txt_html =get_html('https://www.wesai.com/api/rest/'+token_str+'/Java/item/queryItem/%7B%22itemQuery%22:%7B%22allPlatform%22:false,%22cityId%22:%220%22,%22cityName%22:%22%E5%85%A8%E5%9B%BD%22,%22itemTypeId%22:null,%22itemTypePid%22:%228a8283eb55dfd9600156029f3ce00011%22,%22keyword%22:null,%22onlineId%22:null,%22showStartTime%22:null,%22showEndTime%22:null,%22venueId%22:%22%22,%22orderType%22:null,%22curpage%22:1,%22pagesize%22:8%7D%7D?v=1487678065856')
         print bs_txt_html
         bs_txt_html_str =bs_txt_html.encode('utf-8')
         bs_txt_html_str_json =json.loads(bs_txt_html_str)
